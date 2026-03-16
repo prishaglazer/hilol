@@ -61,6 +61,7 @@ button:disabled {
 
 .site-stage {
   position: relative;
+  width: 100%;
 }
 
 .scene {
@@ -414,6 +415,7 @@ p {
   position: relative;
   min-height: 540px;
   transition: height 260ms ease;
+  width: 100%;
 }
 
 .reason-slide {
@@ -572,6 +574,14 @@ p {
 
 .media-placeholder-small {
   min-height: 92px;
+}
+
+.media-card img,
+.media-sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 
 .dots {
@@ -949,11 +959,37 @@ p {
 
   .reason-visual-collage {
     padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 10px;
   }
 
   .reason-main-media {
     min-height: 230px;
     border-radius: 18px;
+    grid-column: 1 / -1;
+  }
+
+  .reason-main-media-contain,
+  .reason-main-media-top {
+    height: auto !important;
+    max-height: none;
+    min-height: 230px;
+  }
+
+  .media-card,
+  .media-card-top-right,
+  .media-sticker {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    min-height: 108px;
+    margin: 0;
+    transform: none;
   }
 
   .media-placeholder {
@@ -975,24 +1011,25 @@ p {
   }
 
   .letter-thumbs {
-    width: 66px;
-    top: 10%;
-    right: 0;
+    width: 58px;
+    top: 11%;
+    right: 4px;
+    opacity: 0.92;
   }
 
   .letter-rotator-one {
-    left: -6px;
-    top: 14%;
+    left: -2px;
+    top: 13%;
   }
 
   .letter-rotator-two {
-    right: -4px;
-    bottom: 14%;
+    right: 2px;
+    bottom: 12%;
   }
 
   .letter-rotator-three {
-    left: 6%;
-    bottom: 5%;
+    left: 2%;
+    bottom: 4%;
   }
 
   .letter-rotator img {
@@ -1013,6 +1050,16 @@ p {
   .slides-card {
     padding: 18px;
     border-radius: 20px;
+  }
+
+  .mini-note {
+    margin-bottom: 12px;
+    font-size: 0.76rem;
+    padding: 7px 10px;
+  }
+
+  .letter-copy {
+    font-size: 0.96rem;
   }
 
   .slides-topbar .eyebrow {
@@ -1051,26 +1098,12 @@ p {
   }
 
   .reason-main-media {
-    min-height: 210px;
+    min-height: 200px;
   }
 
-  .media-placeholder code {
-    font-size: 0.68rem;
-  }
-
-  .media-card {
-    position: static;
-    width: 100%;
-    min-height: 84px;
-    margin-top: 10px;
-  }
-
-  .media-sticker {
-    position: static;
-    width: 100%;
-    min-height: 76px;
-    margin-top: 10px;
-    transform: none;
+  .reason-main-media-contain,
+  .reason-main-media-top {
+    min-height: 200px;
   }
 
   .answer-copy,
@@ -1108,3 +1141,16 @@ p {
     left: 70%;
   }
 }
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .page {
+    min-height: auto;
+    padding-top: 76px;
+  }
+
+  .letter-thumbs,
+  .letter-rotator {
+    opacity: 0.78;
+  }
+}
+
