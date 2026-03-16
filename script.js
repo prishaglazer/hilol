@@ -2,14 +2,26 @@ const audio = document.querySelector("#siteAudio");
 const musicToggle = document.querySelector("#musicToggle");
 const musicToggleText = document.querySelector(".music-toggle-text");
 const audioLoopStart = 28;
-const mutedStorageKey = "proposal-site-muted";
-const sceneStorageKey = "proposal-site-scene";
 const validScenes = ["letter", "reasons", "answer"];
+const tryPlayAudio = () => {
+  if (!audio) {
+    return;
+  }
+
+  if (
+    audio.readyState >= 1 &&
+    (audio.currentTime < audioLoopStart || Number.isNaN(audio.currentTime))
+  ) {
+    audio.currentTime = audioLoopStart;
+  }
+
+  const playAttempt = audio.play();
+  if (playAttempt && typeof playAttempt.catch === "function") {
+    playAttempt.catch(() => {});
+  }
+};
 
 if (audio && musicToggle && musicToggleText) {
-  const savedMutePreference = localStorage.getItem(mutedStorageKey);
-  const shouldStartMuted = savedMutePreference === null ? false : savedMutePreference === "true";
-
   const updateMusicButton = () => {
     const isMuted = audio.muted;
     musicToggleText.textContent = isMuted ? "Unmute" : "Mute";
@@ -18,27 +30,12 @@ if (audio && musicToggle && musicToggleText) {
     musicToggle.setAttribute("aria-pressed", String(isMuted));
   };
 
-  const tryPlayAudio = () => {
-    if (
-      audio.readyState >= 1 &&
-      (audio.currentTime < audioLoopStart || Number.isNaN(audio.currentTime))
-    ) {
-      audio.currentTime = audioLoopStart;
-    }
-
-    const playAttempt = audio.play();
-    if (playAttempt && typeof playAttempt.catch === "function") {
-      playAttempt.catch(() => {});
-    }
-  };
-
   const kickAudioFromGesture = () => {
-    if (!audio.muted) {
-      tryPlayAudio();
-    }
+    tryPlayAudio();
   };
 
-  audio.muted = shouldStartMuted;
+  audio.defaultMuted = false;
+  audio.muted = false;
   audio.volume = 0.9;
 
   audio.addEventListener("loadedmetadata", () => {
@@ -61,7 +58,6 @@ if (audio && musicToggle && musicToggleText) {
 
   musicToggle.addEventListener("click", () => {
     audio.muted = !audio.muted;
-    localStorage.setItem(mutedStorageKey, String(audio.muted));
     updateMusicButton();
     tryPlayAudio();
   });
@@ -77,32 +73,30 @@ if (audio && musicToggle && musicToggleText) {
 const scenes = document.querySelectorAll("[data-scene]");
 const sceneButtons = document.querySelectorAll("[data-go-scene]");
 const initialSceneFromHash = window.location.hash.replace("#", "");
-const savedScene = localStorage.getItem(sceneStorageKey);
 
 const getDefaultScene = () => {
   if (validScenes.includes(initialSceneFromHash)) {
     return initialSceneFromHash;
   }
 
-  if (validScenes.includes(savedScene)) {
-    return savedScene;
-  }
-
   return "letter";
 };
 
-const setScene = (sceneName) => {
+const setScene = (sceneName, updateHash = false) => {
   scenes.forEach((scene) => {
     scene.classList.toggle("is-active", scene.dataset.scene === sceneName);
   });
 
-  localStorage.setItem(sceneStorageKey, sceneName);
-  window.location.hash = sceneName;
+  if (updateHash) {
+    window.location.hash = sceneName;
+  } else {
+    history.replaceState(null, "", window.location.pathname);
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 if (scenes.length) {
-  setScene(getDefaultScene());
+  setScene(getDefaultScene(), false);
 }
 
 sceneButtons.forEach((button) => {
@@ -112,11 +106,8 @@ sceneButtons.forEach((button) => {
       setScene(targetScene);
     }
 
-    if (audio && !audio.muted) {
-      const playAttempt = audio.play();
-      if (playAttempt && typeof playAttempt.catch === "function") {
-        playAttempt.catch(() => {});
-      }
+    if (audio) {
+      tryPlayAudio();
     }
   });
 });
@@ -192,11 +183,8 @@ if (
       updateSlide(currentSlide - 1);
     }
 
-    if (audio && !audio.muted) {
-      const playAttempt = audio.play();
-      if (playAttempt && typeof playAttempt.catch === "function") {
-        playAttempt.catch(() => {});
-      }
+    if (audio) {
+      tryPlayAudio();
     }
   });
 
@@ -207,11 +195,8 @@ if (
       updateSlide(currentSlide + 1);
     }
 
-    if (audio && !audio.muted) {
-      const playAttempt = audio.play();
-      if (playAttempt && typeof playAttempt.catch === "function") {
-        playAttempt.catch(() => {});
-      }
+    if (audio) {
+      tryPlayAudio();
     }
   });
 
@@ -261,11 +246,8 @@ if (answerStage && noButton && yesButton && yesMessage) {
   });
 
   noButton.addEventListener("pointerdown", () => {
-    if (audio && !audio.muted) {
-      const playAttempt = audio.play();
-      if (playAttempt && typeof playAttempt.catch === "function") {
-        playAttempt.catch(() => {});
-      }
+    if (audio) {
+      tryPlayAudio();
     }
   });
 }
