@@ -1,7 +1,7 @@
 const audio = document.querySelector("#siteAudio");
 const musicToggle = document.querySelector("#musicToggle");
 const musicToggleText = document.querySelector(".music-toggle-text");
-const audioLoopStart = 28;
+const audioLoopStart = 43;
 const validScenes = ["letter", "reasons", "answer"];
 const tryPlayAudio = () => {
   if (!audio) {
