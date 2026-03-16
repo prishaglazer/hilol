@@ -32,6 +32,12 @@ if (audio && musicToggle && musicToggleText) {
     }
   };
 
+  const kickAudioFromGesture = () => {
+    if (!audio.muted) {
+      tryPlayAudio();
+    }
+  };
+
   audio.muted = shouldStartMuted;
   audio.volume = 0.9;
 
@@ -60,8 +66,8 @@ if (audio && musicToggle && musicToggleText) {
     tryPlayAudio();
   });
 
-  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
-    window.addEventListener(eventName, tryPlayAudio, { once: true });
+  ["pointerdown", "touchstart", "click", "keydown"].forEach((eventName) => {
+    window.addEventListener(eventName, kickAudioFromGesture, { passive: true });
   });
 
   updateMusicButton();
@@ -104,6 +110,13 @@ sceneButtons.forEach((button) => {
     const targetScene = button.dataset.goScene;
     if (validScenes.includes(targetScene)) {
       setScene(targetScene);
+    }
+
+    if (audio && !audio.muted) {
+      const playAttempt = audio.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
     }
   });
 });
@@ -178,15 +191,28 @@ if (
     if (currentSlide > 0) {
       updateSlide(currentSlide - 1);
     }
+
+    if (audio && !audio.muted) {
+      const playAttempt = audio.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
+    }
   });
 
   nextSlideButton.addEventListener("click", () => {
     if (currentSlide === reasonSlides.length - 1) {
       setScene("answer");
-      return;
+    } else {
+      updateSlide(currentSlide + 1);
     }
 
-    updateSlide(currentSlide + 1);
+    if (audio && !audio.muted) {
+      const playAttempt = audio.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
+    }
   });
 
   updateSlide(0);
@@ -228,6 +254,15 @@ if (answerStage && noButton && yesButton && yesMessage) {
     }
     if (chaosVideo) {
       const playAttempt = chaosVideo.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {});
+      }
+    }
+  });
+
+  noButton.addEventListener("pointerdown", () => {
+    if (audio && !audio.muted) {
+      const playAttempt = audio.play();
       if (playAttempt && typeof playAttempt.catch === "function") {
         playAttempt.catch(() => {});
       }
