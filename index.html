@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Prisha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page-shell">
+    <audio id="siteAudio" preload="auto" playsinline>
+      <source src="The Weeknd - Die For You (SPOTISAVER).mp3" type="audio/mpeg" />
+    </audio>
+
+    <button
+      class="music-toggle"
+      id="musicToggle"
+      type="button"
+      aria-label="Mute music"
+      aria-pressed="false"
+    >
+      <span class="music-toggle-icon" aria-hidden="true"></span>
+      <span class="music-toggle-text">Mute</span>
+    </button>
+
+    <main class="site-stage">
+      <section class="scene is-active" data-scene="letter">
+        <div class="page page-letter">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+          <img
+            class="letter-float letter-thumbs"
+            src="thumsb-up-ok.gif"
+            alt="Thumbs up ok gif"
+          />
+          <div class="letter-float letter-rotator letter-rotator-one">
+            <img src="rotating thing.png" alt="" />
+            <span>Hi lol</span>
+          </div>
+          <div class="letter-float letter-rotator letter-rotator-two">
+            <img src="rotating thing.png" alt="" />
+            <span>hihi</span>
+          </div>
+          <div class="letter-float letter-rotator letter-rotator-three">
+            <img src="rotating thing.png" alt="" />
+            <span>Hi lol</span>
+          </div>
+
+          <section class="card letter-card">
+            <p class="eyebrow">a small thing i made for you (100% myself 😼)</p>
+            <div class="mini-note">made with very calm hands and absolutely no panic</div>
+            <h1>Dear Prisha,</h1>
+            <div class="letter-copy">
+              <p>
+                I wanted to make something that feels a little more personal than a
+                text, so here we are.
+              </p>
+              <p>
+                You have this really lovely way of making things feel lighter,
+                warmer, and honestly a lot more fun. I like talking to you,
+                Prisha. (I honestly feel like a little kid with a crush writing
+                this 😭)
+              </p>
+              <p>
+                So before I embarrass myself any further, I made a tiny case for
+                why I think you should go out with me.
+              </p>
+            </div>
+
+            <div class="signature-row">
+              <span>with a suspicious amount of effort,</span>
+              <strong>Akshar.</strong>
+            </div>
+
+            <button class="primary-button" type="button" data-go-scene="reasons">
+              Reasons you should go on lunch with me
+            </button>
+          </section>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="reasons">
+        <div class="page page-reasons">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <section class="card slides-card">
+            <div class="slides-topbar">
+              <button class="text-link text-button" type="button" data-go-scene="letter">
+                Back to the letter
+              </button>
+              <div class="slides-meta">
+                <p class="eyebrow">exhibit a through f</p>
+                <p class="slide-label" id="slideLabel">Slide 1 of 6</p>
+              </div>
+            </div>
+
+            <div class="slides-frame">
+              <article class="reason-slide is-active" data-slide>
+                <div class="reason-copy">
+                  <span class="slide-count">01</span>
+                  <h2>I'll plan a cute date, we'll have fun</h2>
+                  <p>
+                    No boring dates. Thoughtful dates, maybe some laphing, a good
+                    lunch spot, dessert afterwards, and at least one small detail
+                    that makes you smile.
+                  </p>
+                </div>
+                <div class="reason-visual reason-visual-collage">
+                  <img
+                    class="reason-main-media reason-main-media-contain"
+                    src="sweethearts-emoticon.png"
+                    alt="Sweethearts emoticon"
+                  />
+                  <div class="media-sticker">
+                    <img src="blue-emoji.gif" alt="Blue face gif" />
+                  </div>
+                  <div class="media-card">
+                    <img src="dateahh.webp" alt="Dateahh image" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="reason-slide" data-slide>
+                <div class="reason-copy">
+                  <span class="slide-count">02</span>
+                  <h2>I would hype you up for free</h2>
+                  <p>
+                    Bad day, good day, random Tuesday, be it anything. I'll
+                    def be the one there for you always.
+                  </p>
+                </div>
+                <div class="reason-visual reason-visual-collage">
+                  <img
+                    class="reason-main-media reason-main-media-top"
+                    src="national-day-of-listening-happy-thanksgiving.gif"
+                    alt="National day of listening gif"
+                  />
+                  <div class="media-sticker media-placeholder media-placeholder-small">
+                    <img src="pretty bluemoji.png" alt="Pretty bluemoji" />
+                  </div>
+                  <div class="media-card media-placeholder">
+                    <img src="cheeky smiley.gif" alt="Cheeky smiley gif" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="reason-slide" data-slide>
+                <div class="reason-copy">
+                  <span class="slide-count">03</span>
+                  <h2>I'm funny in a charmingly questionable way</h2>
+                  <p>
+                    Enough to make you laugh, not enough to get us banned from
+                    public places, lol. I think that's a healthy balance.
+                  </p>
+                </div>
+                <div class="reason-visual reason-visual-collage">
+                  <img
+                    class="reason-main-media"
+                    src="funnyahh memoji.png"
+                    alt="Funny ahh memoji"
+                  />
+                  <div class="media-card media-card-top-right media-placeholder">
+                    <img src="okhai.jpg" alt="Okhai image" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="reason-slide" data-slide>
+                <div class="reason-copy">
+                  <span class="slide-count">04</span>
+                  <h2>I'd remember the little things</h2>
+                  <p>
+                    Your order, your favorite songs, stories you told once, the
+                    things you care about. (Lwk, I have a Word file with things
+                    about you on my laptop 🫣)
+                  </p>
+                </div>
+                <div class="reason-visual">
+                  <img
+                    src="blushboy.png"
+                    alt="Blushboy image"
+                  />
+                </div>
+              </article>
+
+              <article class="reason-slide" data-slide>
+                <div class="reason-copy">
+                  <span class="slide-count">05</span>
+                  <h2>We'll have time to kill</h2>
+                  <p>
+                    Our exams are over, or at least getting over, and we both
+                    have free time. Let's go on lunch and see how it goes. (Treat
+                    from me, ofc)
+                  </p>
+                </div>
+                <div class="reason-visual reason-visual-collage">
+                  <img
+                    class="reason-main-media reason-main-media-top"
+                    src="timekilla.png"
+                    alt="Timekilla image"
+                  />
+                  <div class="media-sticker">
+                    <img src="examsboo.png" alt="Examsboo image" />
+                  </div>
+                </div>
+              </article>
+
+              <article class="reason-slide" data-slide>
+                <div class="reason-copy">
+                  <span class="slide-count">06</span>
+                  <h2>Mostly, I just genuinely like you</h2>
+                  <p>
+                    Under all the cute presentation stuff, that's the real
+                    reason. I think you're lovely, Prisha, and I'd really like
+                    to take you out. (Like genuinely)
+                  </p>
+                </div>
+                <div class="reason-visual">
+                  <img
+                    src="daproposal.webp"
+                    alt="Daproposal image"
+                  />
+                </div>
+              </article>
+            </div>
+
+            <div class="slides-footer">
+              <div class="dots" aria-label="Slide progress"></div>
+              <div class="slide-actions">
+                <button class="secondary-button" type="button" id="prevSlide">
+                  Previous
+                </button>
+                <button class="primary-button" type="button" id="nextSlide">
+                  Next
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="answer">
+        <div class="page page-answer">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <section class="card answer-card">
+            <p class="eyebrow">final question</p>
+            <h1>So Prisha, what do you think?</h1>
+            <p class="answer-copy">
+              I'm hoping you say yes. The website worked very hard for this 🙈
+            </p>
+
+            <div class="final-chaos" id="finalChaos">
+              <img class="chaos-gif chaos-gif-left" src="jerry-beg.gif" alt="Begging Jerry gif" />
+              <img
+                class="chaos-gif chaos-gif-right"
+                src="pokelawls-nooooo.gif"
+                alt="Screaming no gif"
+              />
+              <video
+                class="chaos-video"
+                id="chaosVideo"
+                src="playboi-carti-playboi.mp4"
+                playsinline
+                muted
+                loop
+                preload="auto"
+              ></video>
+            </div>
+
+            <div class="answer-stage" id="answerStage">
+              <button class="primary-button answer-button" id="yesButton" type="button">
+                Yes
+              </button>
+              <button class="secondary-button answer-button no-button" id="noButton" type="button">
+                No
+              </button>
+            </div>
+
+            <p class="yes-message" id="yesMessage" hidden>
+              You just made me ridiculously happy. Text me when you're free,
+              and I'll plan the date. <strong>You're awesome :)</strong>
+            </p>
+
+            <button class="text-link text-button" type="button" data-go-scene="reasons">
+              Replay the reasons
+            </button>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
